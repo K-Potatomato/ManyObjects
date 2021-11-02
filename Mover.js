@@ -13,9 +13,10 @@ class Mover {
   }
 
 attractTo(aPos){
-  let f = p5.Vector.sub(mousePos, m.pos);
+  let mousePos = createVector(mouseX, mouseY);
+  let f = p5.Vector.sub(mousePos, this.pos);
   f.limit(2);
-  m.applyForce(f);
+  this.applyForce(f);
 }
 
   update() {
