@@ -17,12 +17,15 @@ function draw() {
   if (mouseIsPressed) {
     //make attract to mouse position
     let mousePos = createVector(mouseX, mouseY);
-    let f = p5.Vector.sub(mousePos, m.pos);
-    f.limit(2);
-    m.applyForce(f);
+    m.attractTo(mousePos);
+    m2.attractTo(mousePos);
 
-    let f2 = p5.Vector.sub(mousePos, m2.pos);
-    f2.limit(2);
-    m2.applyForce(f2);
+    // let f = p5.Vector.sub(mousePos, m.pos);
+    // f.limit(2);
+    // m.applyForce(f);
+    //
+    // let f2 = p5.Vector.sub(mousePos, m2.pos);
+    // f2.limit(2);
+    // m2.applyForce(f2);
   }
 }
