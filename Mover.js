@@ -4,7 +4,7 @@ class Mover {
     this.vel = createVector();
     this.acc = createVector();
     this.m = m;
-
+    this.c = color(random(200, 255), random(200, 255), 0);
   }
 
   applyForce(aForce) {
@@ -12,12 +12,11 @@ class Mover {
     this.acc.add(f);
   }
 
-attractTo(aPos){
-  let mousePos = createVector(mouseX, mouseY);
-  let f = p5.Vector.sub(mousePos, this.pos);
-  f.limit(2);
-  this.applyForce(f);
-}
+  attractTo(aPos) {
+    let f = p5.Vector.sub(aPos, this.pos);
+    f.limit(2);
+    this.applyForce(f);
+  }
 
   update() {
     this.vel.add(this.acc);
@@ -28,5 +27,11 @@ attractTo(aPos){
   show() {
     fill(0);
     circle(this.pos.x, this.pos.y, this.m);
+  }
+
+  drawOn(c) {
+    c.fill(this.c);
+    c.noStroke();
+    c.circle(this.pos.x, this.pos.y, this.vel.mag()*5);
   }
 }
